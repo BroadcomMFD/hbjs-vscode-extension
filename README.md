@@ -1,15 +1,15 @@
 # HB.js
 
 <!-- We can generalize this overview as more functionality is added -->
-The HostBridge JavaScript Engine (HB.js) VS Code extension modernizes the way you interact with HB.js and offers a friendly and convenient way to work with HB.js Primitives, the Cobol CopyBook to Javascript object generation tool, and the Application Explorer. 
+The HostBridge JavaScript Engine (HB.js) VS Code extension modernizes the way you interact with HB.js and offers a friendly and convenient way to work with HB.js Primitives, with the COBOL CopyBook to JavaScript object generation tool, and with the Application Explorer.
 
-How can we improve the HB.js VSCode Extension? ![Let us know on our Git repository](https://github.com/BroadcomMFD/hbjs-vscode-extension/issues)
+How can we improve the HB.js VS Code Extension? [Let us know on our Git repository](https://github.com/BroadcomMFD/hbjs-vscode-extension/issues)
 
-The extension includes the following features:
+The VS Code extension includes the following features:
 
 - Execution of HB.js Primitives (Make/Put/Run)
-- Access to the Integrated Application Explorer
 - Native generation of a JavaScript object from a COBOL copybook 
+- Access to the Integrated Application Explorer (AE) and the AE Playback
 
 ## Table of Contents
 
@@ -17,12 +17,15 @@ The extension includes the following features:
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
-    - [Set a VS Code Workspace](#set-a-vs-code-workspace)
+    - [Specify a VS Code Workspace](#specify-a-vs-code-workspace)
     - [Add New Host Connection](#add-new-host-connection)
     - [Select a Default Repository](#select-a-default-repository)
     - [Execute Primitives](#execute-primitives)
     - [Access the Integrated Application Explorer](#access-the-integrated-application-explorer)
+    - [Access the Integrated Application Explorer Settings](#access-the-integrated-application-explorer-settings)
     - [Generate a JavaScript object from a COBOL copybook](#generate-a-javascript-object-from-a-cobol-copybook)
+    - [Save an Application Explorer session to JSON file](#save-an-application-explorer-session-to-json-file)
+    - [Open an Application Explorer Playback session from JSON file](#open-an-application-explorer-playback-session-from-json-file)
   - [List of Limitations](#list-of-limitations)
   - [Privacy Notice](#privacy-notice)
   - [Technical Assistance and Support for HB.js](#technical-assistance-and-support-for-hbjs)
@@ -30,64 +33,106 @@ The extension includes the following features:
 
 ## Prerequisites
 
-Ensure that you meet the following prerequisites before you use the HostBridge JavaScript Engine VS Code extension:
+Ensure that you meet the following prerequisites before you use the HB.js VS Code extension:
 
-- Access to HostBridge JavaScript Engine
-
+- Access to HB.js on the mainframe
 
 ## Getting Started
 
-### Set a VS Code Workspace
-The HB.js extension requires a VSCode Workspace for full functionality. To associate a folder with a workspace, open a folder in the Explorer view.
+### Specify a VS Code Workspace
+The HB.js extension requires a VS Code Workspace for full functionality. To associate a folder with a workspace, open a folder in the Explorer view.
 
-![Set a Workspace](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/setWorkspace.gif)
+![Specify a Workspace](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/setWorkspace.gif)
 
 ### Add New Host Connection 
 To add a new host connection, click the + (plus) icon in the HB.JS: HOSTS window. A host connection requires the following information:
-- HB.js Host URL, including the port number. For example: http://example.com:9000
+- HB.js Host URL, including the port number. For example: http[]()://example.com:9000
+- The CICS systems programmer responsible for the CICS regions that you are trying to access will provide the host URL, including the port number.
 - A Host Name and a Region Name to help you identify the connection in the Hosts window.
 - A Default User ID, which is a user ID already defined in CICS on the host. When you connect to the host, you'll be prompted to enter the password for this user ID.
 
 ![Add New Host Connection](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/AddNewHost.gif)
 
 ### Select a Default Repository
-Host > Region > [Right Click] Chosen Repository > Set Default Repository
+Host > Region > [Right - click] Chosen Repository > Set Default Repository
 
 ![Set Default Repository](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/setDefaultRepo.gif)
 
 ### Execute Primitives
 
-  - Navigate to the HBJS Terminal, which shows HB.js command output and messages
-  - Open a file in the explorer window ("right-click > Get" or double click a Host file)
-  - Right-click in explorer window and select HB.js Commands > (Make|Put|Run) (there are also listed keyboard shortcuts for each) 
+  - Navigate to the HBJS Terminal, which shows HB.js command output and messages.
+  - Open a file in the explorer window ("right-click > Get" or double-click a Host file).
+  - Right-click in explorer window and select HB.js Commands > (Make|Put|Run) (there are also listed keyboard shortcuts for each).
   
 ![Execute Primitive](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/executePrimitve.gif)
 
 ### Access the Integrated Application Explorer
 
-To access the Application Explorer:
+To access the Application Explorer, perform the following steps:
   - Click the Application Explorer icon next to the region where you want to run the Application Explorer.
   - In the Application Explorer tab, enter the transaction ID for the initial transaction that you want to analyze.
   
-  For information about using the Application Explorer, see [Analyzing Applications](https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0/using/introduction-to-application-analysis.html) in the HB.js documentation.
+  For information about using the Application Explorer, see [Analyzing Applications](https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/hostbridge-javascript-engine/8-0/using/analyzing-applications.html) in the HB.js documentation.
   
 ![Application Explorer](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/appExplorer.gif)
 
+### Access the Integrated Application Explorer Settings
+
+To access the settings for the Application Explorer, perform the following steps: 
+- Click the gear icon to the right of the Application Explorer Icon at the region level.
+- Enter your values and then click submit to save your desired settings.
+
+![Application Explorer Settings](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/appExpSettings.gif)
+
 ### Generate a JavaScript object from a COBOL copybook
 
-- Right-click on a COBOL file in the editor or in the explorer window and select HB.js Commands > Generate JS Object.  
+- Right-click on a COBOL file in the editor or in the Explorer window and select HB.js Commands > Generate JS Object.  
   **Note:** You can select either COBOL field names to use COBOL-style field names or JavaScript field names to use JavaScript-style field names in the generated file.
 
 The generated HB.js JavaScript function is opened in the editor and saved to the workspace folder using a filename similar to `filename_(COBOL|JavaScript)_JSOBJ.hbx`
 - *filename* is the filename of the original COBOL file
 - (COBOL | JavaScript) indicates whether the HB.js function is created using COBOL-style or JavaScript-style field names for the object.
 
+- Make (HB.js Primitive) the file to your utility repository and use the following code to access the file from within your scripts
+```js
+//COBOL Copybook Utilities
+var copybookFactory = require('[filename_(COBOL|JavaScript)_JSOBJ]', '[utility repository]');
+
+var demoCopybook = new copybookFactory.commareaBuffer();
+var pgm = new CommareaProgram();
+
+//Initialize
+demoCopybook.initialize();
+pgm.program = 'TRADERBL';
+
+//Commands 
+demoCopybook.get()
+demoCopybook.set()
+pgm.run(demoCopybook.buffer);
+```
+
 ![JS Object Generation](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/jsObjGen.gif)
 
 
+### Save an Application Explorer session to JSON file
+
+  - In the Application Explorer, navigate to an active terminal session.
+  - Close the Application Explorer tab and choose 'save' in the pop-up to save.
+  - Note the saved session in the Folders tab under 'App Explorer Playback > today's date'.
+  
+![Execute Primitive](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/saveSession.gif)
+
+### Open an Application Explorer Playback session from JSON file
+
+  - In the VS Code Folders tab, navigate to the saved JSON file.
+  - Right-click on the file and choose 'HB.js Commands > Application Explorer Playback'. An Application Explorer Playback tab should open.
+  - You can directly access screens in the playback by clicking the screen icons.
+  - To progress through the screens sequentially, use Page Up and Page Down. 
+  
+![Execute Primitive](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/openSession.gif)
+
 ## List of Limitations
 The following features exist in the HB.js Eclipse plugin that have not yet been added to this extension. 
-- Application Explorer Playback 
 - Hex dump view 
 - Worklog view 
 
@@ -115,4 +160,4 @@ Technical support cases must be submitted to Broadcom in accordance with guidanc
 Note: To receive technical assistance and support, you must remain compliant with “Working with Support”, be current on all applicable licensing and maintenance requirements, and maintain an environment in which all computer hardware, operating systems, and third party software associated with the affected Broadcom software are on the releases and version levels from the manufacturer that Broadcom designates as compatible with the software. Changes you elect to make to your operating environment could detrimentally affect the performance of Broadcom software and Broadcom shall not be responsible for these effects or any resulting degradation in performance of the Broadcom software. Severity 1 cases must be opened via telephone and elevations of lower severity incidents to Severity 1 status must be requested via telephone.
 
 ---
-Copyright © 2024 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
+Copyright © 2025 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
