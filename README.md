@@ -1,3 +1,9 @@
+<div align="center">
+
+[![Code4z](https://img.shields.io/badge/Code4z-marketplace-cc092f)](https://marketplace.visualstudio.com/search?term=code4z&target=VSCode)
+
+</div>
+
 # HB.js
 
 <!-- We can generalize this overview as more functionality is added -->
@@ -11,31 +17,44 @@ The VS Code extension includes the following features:
 - Native generation of a JavaScript object from a COBOL copybook 
 - Access to the Integrated Application Explorer (AE) and the AE Playback
 
+<br />
+
+<img align="left" alt="This extension is part of the Code4z experience" width="80" height="82" src="https://raw.githubusercontent.com/BroadcomMFD/code4z/refs/heads/main/icon5.png" />
+
+HB.js for VS Code is part of the [Code4z](https://techdocs.broadcom.com/code4z) experience from Broadcom, which offers a modern experience for mainframe application developers. To get started with Code4z, check out our foundational [extension pack](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.code4z-extension-pack).
+
+<br />
+
+
 ## Table of Contents
 
 - [HB.js](#hbjs)
   - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
+  - [Address Software Requirements](#address-software-requirements)
   - [Getting Started](#getting-started)
     - [Specify a VS Code Workspace](#specify-a-vs-code-workspace)
     - [Add New Host Connection](#add-new-host-connection)
     - [Select a Default Repository](#select-a-default-repository)
+  - [Next Steps](#next-steps)
     - [Execute Primitives](#execute-primitives)
     - [Access the Integrated Application Explorer](#access-the-integrated-application-explorer)
     - [Access the Integrated Application Explorer Settings](#access-the-integrated-application-explorer-settings)
-    - [Generate a JavaScript object from a COBOL copybook](#generate-a-javascript-object-from-a-cobol-copybook)
-    - [Save an Application Explorer session to JSON file](#save-an-application-explorer-session-to-json-file)
-    - [Open an Application Explorer Playback session from JSON file](#open-an-application-explorer-playback-session-from-json-file)
+    - [Generate a JavaScript Object from a COBOL Copybook](#generate-a-javascript-object-from-a-cobol-copybook)
+    - [Save an Application Explorer Session to JSON file](#save-an-application-explorer-session-to-json-file)
+    - [Open an Application Explorer Playback Session from JSON file](#open-an-application-explorer-playback-session-from-json-file)
+    - [Generate a JavaScript Object from an OpenAPI JSON File](#generate-a-javascript-object-from-an-openapi-json-file)
   - [List of Limitations](#list-of-limitations)
   - [Privacy Notice](#privacy-notice)
   - [Technical Assistance and Support for HB.js](#technical-assistance-and-support-for-hbjs)
 
 
-## Prerequisites
+## Address Software Requirements
 
-Ensure that you meet the following prerequisites before you use the HB.js VS Code extension:
+  Before you use the HB.js VS Code extension, ensure that your site and workstation meet the following requirements:
 
-- Access to HB.js on the mainframe
+### Server
+  - HB.js on the mainframe
+  - A valid mainframe user ID
 
 ## Getting Started
 
@@ -57,6 +76,8 @@ To add a new host connection, click the + (plus) icon in the HB.JS: HOSTS window
 Host > Region > [Right - click] Chosen Repository > Set Default Repository
 
 ![Set Default Repository](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/setDefaultRepo.gif)
+
+## Next Steps
 
 ### Execute Primitives
 
@@ -84,7 +105,7 @@ To access the settings for the Application Explorer, perform the following steps
 
 ![Application Explorer Settings](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/appExpSettings.gif)
 
-### Generate a JavaScript object from a COBOL copybook
+### Generate a JavaScript Object from a COBOL Copybook
 
 - Right-click on a COBOL file in the editor or in the Explorer window and select HB.js Commands > Generate JS Object.  
   **Note:** You can select either COBOL field names to use COBOL-style field names or JavaScript field names to use JavaScript-style field names in the generated file.
@@ -114,7 +135,7 @@ pgm.run(demoCopybook.buffer);
 ![JS Object Generation](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/jsObjGen.gif)
 
 
-### Save an Application Explorer session to JSON file
+### Save an Application Explorer Session to JSON file
 
   - In the Application Explorer, navigate to an active terminal session.
   - Close the Application Explorer tab and choose 'save' in the pop-up to save.
@@ -122,7 +143,7 @@ pgm.run(demoCopybook.buffer);
   
 ![Execute Primitive](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/saveSession.gif)
 
-### Open an Application Explorer Playback session from JSON file
+### Open an Application Explorer Playback Session from JSON file
 
   - In the VS Code Folders tab, navigate to the saved JSON file.
   - Right-click on the file and choose 'HB.js Commands > Application Explorer Playback'. An Application Explorer Playback tab should open.
@@ -130,6 +151,62 @@ pgm.run(demoCopybook.buffer);
   - To progress through the screens sequentially, use Page Up and Page Down. 
   
 ![Execute Primitive](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/openSession.gif)
+
+### Generate a JavaScript Object from an OpenAPI JSON File
+
+- In the editor or in the Explorer window, right-click on an OpenAPI JSON file and select HB.js Commands > Generate JS Object from OpenAPI.  
+  **Note:** Not all formats are supported at this time. Any unsupported formats will flag as failed tests. All formats will be added in future releases.
+
+The generated HB.js JavaScript function is opened in the editor and saved to the workspace folder using a filename similar to `filename_OpenAPI_JSOBJ.hbx`
+- *filename* is the filename of the original OpenAPI JSON file.
+
+- Use the HB.js command Make to store the file in your utility repository.
+- Use the following code to access the file from within your scripts:
+```js
+//OpenAPI Utility
+var openAPIUtil = require('filename_OpenAPI_JSOBJ', '[utility repository]');
+
+//Retrieve the required schema from your utility file 
+var openAPIDefinition = new openAPIUtil.filename();
+var openAPISchema = openAPIDefinition.['your files dot notation'].schema;
+
+//Set your object or array of objects that you want to validate against your schema
+var sampleData = "your object or array of objects here"; 
+
+//Call the validate function from your generated JS Object 
+//This example will write out the output 
+writeln (JSON.stringify(openAPIUtil.validate(sampleData, openAPISchema)));
+
+//Sample Output 
+{
+  "successes": {
+    "required": [
+      "Found property: amount",
+      "Found property: currency",
+      "Found property: callbackUrl"
+    ],
+    "type": [
+      "Property 'callbackUrl' is type 'string'",
+      "Property 'amount' is type 'number'",
+    ],
+    "maxLength": [
+      "Property 'callbackUrl' complies to max length '148'"
+    ],
+    "format": [
+      "Property 'amount' is format 'int32"
+    ]
+  },
+  "errors": {
+    "type": [
+      "Property 'currency' must be type 'number', found 'string'"
+    ]
+  },
+  "summary": "7 validations have passed, 1 failed"
+}
+
+```
+
+![Open API JS Object Generation](https://broadcommfd.github.io/hbjs-vscode-extension/GIFs/openAPI.gif)
 
 ## List of Limitations
 The following features exist in the HB.js Eclipse plugin that have not yet been added to this extension. 
@@ -143,7 +220,7 @@ The extensions for Visual Studio Code developed by Broadcom Inc., including its 
 
 ## Technical Assistance and Support for HB.js
 
-The HB.js is made available to customers on the Visual Studio Code Marketplace in accordance with the terms and conditions contained in the provided End-User License Agreement (EULA).
+The HB.js extension is made available to customers on the Visual Studio Code Marketplace in accordance with the terms and conditions contained in the provided End-User License Agreement (EULA).
 
 If you are on active support for HostBridge JavaScript Engine, you get technical assistance and support in accordance with the terms, guidelines, details, and parameters that are located within the Broadcom [Working with Support](https://techdocs.broadcom.com/us/product-content/admin-content/ca-support-policies.html?intcmp=footernav) guide.
 
@@ -161,3 +238,6 @@ Note: To receive technical assistance and support, you must remain compliant wit
 
 ---
 Copyright © 2025 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
+
+
+[def]: #generate-a-javascript-object-from-a-cobol-copybook
