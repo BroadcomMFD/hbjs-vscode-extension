@@ -51,7 +51,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
  <summary id="getting-started"><span style="font-size: 1.5em"><b>Getting Started</b></span><hr></summary> 
   
  <details style="margin-left: 20px;">
- <summary id="specify-a-vs-code-workspace"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Specify a VS Code Workspace</span></summary>
+ <summary id="specify-a-vs-code-workspace"><span style="margin-left: 20px;"style="font-size: 1.3em">Specify a VS Code Workspace</span></summary>
 
  <p style="margin-left: 33px;"> The HB.js extension requires a VS Code Workspace for full functionality. To associate a folder with a workspace, open a folder in the <b>Explorer</b> view. </p>
 
@@ -60,7 +60,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
 </details>
 
 <details style="margin-left: 20px;">
- <summary id="add-a-host-connection"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Add a Host Connection</span></summary>
+ <summary id="add-a-host-connection"><span style="margin-left: 20px;" style="font-size: 1.3em">Add a Host Connection</span></summary>
 
  <p style="margin-left: 33px;"> To add a new host connection, select the + (plus) icon in the <b>HB.JS: HOSTS</b> view and enter the following information:</p>
 
@@ -76,7 +76,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
 </details>
 
 <details style="margin-left: 20px;">
- <summary id="select-a-default-repository"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Select a Default Repository</span></summary>
+ <summary id="select-a-default-repository"><span style="margin-left: 20px;" style="font-size: 1.3em">Select a Default Repository</span></summary>
  
 <p style="margin-left: 33px;"> In the <b>HB.JS HOSTS</b> view, select a host and a region, right-click the chosen region, and select <b>Set Default Repository</b>.
 
@@ -86,7 +86,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
 
 
 <details style="margin-left: 20px;">
- <summary id="use-hb.js-commands"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Use HB.js Commands</span></summary>
+ <summary id="use-hb.js-commands"><span style="margin-left: 20px;" style="font-size: 1.3em">Use HB.js Commands</span></summary>
 
  
  1. Navigate to the **HBJS Terminal** panel, which shows HB.js command output and messages.
@@ -103,7 +103,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
  <summary id="use-the-application-explorer-to-examine-cics-applications"><span style="font-size: 1.5em"><b>Use the Application Explorer to Examine CICS Applications</b></span><hr></summary>
 
 <details style="margin-left: 20px;">
-<summary id="access-the-application-explorer"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Access the Application Explorer</span></summary>
+<summary id="access-the-application-explorer"><span style="margin-left: 20px;" style="font-size: 1.3em">Access the Application Explorer</span></summary>
  
 <p style="margin-left: 33px;"> To access the Application Explorer, perform the following steps:</p>
 
@@ -117,7 +117,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
 </details>
 
 <details style="margin-left: 20px;">
-<summary id="access-the-application-explorer-settings"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Access the Application Explorer Settings</span></summary>
+<summary id="access-the-application-explorer-settings"><span style="margin-left: 20px;" style="font-size: 1.3em">Access the Application Explorer Settings</span></summary>
 
 <p style="margin-left: 33px;"> To access the settings for the Application Explorer, perform the following steps:</p>
 
@@ -132,7 +132,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
 
 
 <details style="margin-left: 20px;">
-<summary id="save-an-application-explorer-session-to-json-file"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Save an Application Explorer Session to a JSON File</span></summary>
+<summary id="save-an-application-explorer-session-to-json-file"><span style="margin-left: 20px;" style="font-size: 1.3em">Save an Application Explorer Session to a JSON File</span></summary>
 
   1. In the Application Explorer, navigate to an active terminal session.
   2. Close the **App Explorer** tab and select **Save** in the pop-up window.
@@ -144,7 +144,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
 
 <details style="margin-left: 20px;">
 
-<summary id="open-an-application-explorer-playback-session-from-json-file"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Open an Application Explorer Playback Session from a JSON File</span></summary>
+<summary id="open-an-application-explorer-playback-session-from-json-file"><span style="margin-left: 20px;" style="font-size: 1.3em">Open an Application Explorer Playback Session from a JSON File</span></summary>
 
   1. In the **Explorer** view, navigate to the saved JSON file.
   > **Note:** If you do not have a saved JSON file, see the preceding section, **Save an Application Explorer Session to a JSON File**.
@@ -164,7 +164,7 @@ We encourage you to share ideas to help improve the HB.js for VS Code Extension.
  <summary id="generate-javascript-objects"><span style="font-size: 1.5em"><b>Generate JavaScript Objects</b></span><hr></summary>
 
  <details style="margin-left: 20px;">
-<summary id="generate-a-javascript-object-from-a-cobol-copybook"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Generate a JavaScript Object from a COBOL Copybook</span></summary>
+<summary id="generate-a-javascript-object-from-a-cobol-copybook"><span style="margin-left: 20px;" style="font-size: 1.3em">Generate a JavaScript Object from a COBOL Copybook</span></summary>
 
 1. Right-click on a COBOL file in the editor or explorer view and select **HB.js Commands > Generate JS Object**.  
   >**Note:** You can select either COBOL field names to use COBOL-style field names or JavaScript field names to use JavaScript-style field names in the generated file.
@@ -200,7 +200,7 @@ pgm.run(demoCopybook.buffer);
 </details>
 
 <details style="margin-left: 20px;">
-<summary id="generate-a-javascript-object-from-an-openapi-json-file"><span style="margin-left: 20px;"><span style="font-size: 1.3em">Generate a JavaScript Object from an OpenAPI JSON File</span></summary>
+<summary id="generate-a-javascript-object-from-an-openapi-json-file"><span style="margin-left: 20px;" style="font-size: 1.3em">Generate a JavaScript Object from an OpenAPI JSON File</span></summary>
 
 1. In the editor, right-click on an OpenAPI JSON file and select **HB.js Commands > Generate JS Object from OpenAPI**.  
 > **Note:** Not all formats are supported at this time. Any unsupported formats are flagged as failed tests.
